@@ -1,0 +1,2063 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. インタラクション &#8212; Visualization Curriculum</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'altair_interaction';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="7. Cartographic Visualization" href="altair_cartographic.html" />
+    <link rel="prev" title="5. 複数ビューの構成" href="altair_view_composition.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/altair-hist.png" class="logo__image only-light" alt="Visualization Curriculum - Home"/>
+    <img src="_static/altair-hist.png" class="logo__image only-dark pst-js-only" alt="Visualization Curriculum - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Curriculum</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="altair_introduction.html">1. Altairの紹介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altair_marks_encoding.html">2. データ型、グラフィカルマーク、およびビジュアルエンコーディングチャネル</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altair_data_transformation.html">3. データ変換</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altair_scales_axes_legends.html">4. スケール、軸、凡例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altair_view_composition.html">5. 複数ビューの構成</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. インタラクション</a></li>
+<li class="toctree-l1"><a class="reference internal" href="altair_cartographic.html">7. Cartographic Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Support</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="altair_debugging.html">Altair Debugging Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/uwdata/visualization-curriculum/blob/master/altair_interaction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/uwdata/visualization-curriculum" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/uwdata/visualization-curriculum/issues/new?title=Issue%20on%20page%20%2Faltair_interaction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/altair_interaction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>インタラクション</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">6.1. Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-selections">6.2. Introducing Selections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-queries">6.3. Dynamic Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.3.1. 複数の入力に選択をバインド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.3.2. ビジュアライゼーションを動的クエリとして使用する</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.4. パン＆ズーム</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.5. ナビゲーション: オーバービュー + ディテール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.6. オンデマンド詳細表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.7. ブラッシング＆リンクの再考</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.7.1. クロスフィルタリング</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.8. サマリー</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.8.1. 付録: 時間の表現について</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><span class="section-number">6. </span>インタラクション<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><em>「グラフィックは一度きり‘描かれる’のではなく、データの相互作用によって構成されるすべての関係を明らかにするまで‘構築’され、再構築される。最良のグラフィック操作は、意思決定者自身が行うものである。」</em> — <a class="reference external" href="https://books.google.com/books?id=csqX_xnm4tcC">ジャック・ベルタン (Jacques Bertin)</a></p>
+<p>可視化は、データを理解するための強力な手段を提供します。しかし、単一の画像が提供できる答えは、せいぜい数個の質問に対するものです。_インタラクション_を通じて、静的な画像を探索ツールに変えることができます。興味のあるポイントを強調表示し、詳細なパターンを明らかにするためにズームし、複数のビューをリンクして多次元の関係を考察することが可能になります。</p>
+<p>インタラクションの中心には、<em>選択 (selection)</em> の概念があります。これは、どの要素や領域に関心があるのかをコンピューターに指示する手段です。たとえば、ポイントにマウスをホバーさせる、複数のマークをクリックする、あるいはデータのサブセットを強調表示するために領域を囲むボックスを描画するなどがあります。</p>
+<p>Altairは、視覚的エンコーディングやデータ変換と並んで、インタラクティブな選択を作成するための_選択_抽象化を提供します。この選択は以下の3つの側面を包含します：</p>
+<ol class="arabic simple">
+<li><p>マウスホバー、クリック、ドラッグ、スクロール、タッチイベントなど、ポイントや関心のある領域を選択するための入力イベントの処理。</p></li>
+<li><p>入力を一般化して選択ルール（または<a class="reference external" href="https://en.wikipedia.org/wiki/Predicate_%28mathematical_logic%29"><em>述語</em></a>）を形成し、特定のデータレコードが選択内にあるかどうかを判断。</p></li>
+<li><p>選択述語を使用して、<em>条件付きエンコーディング</em>、<em>フィルター変換</em>、または_スケールドメイン_を駆動することで、可視化を動的に構成。</p></li>
+</ol>
+<p>このノートブックでは、インタラクティブな選択を紹介し、動的クエリ、パン＆ズーム、オンデマンドでの詳細表示、ブラッシング＆リンクなど、さまざまなインタラクション技術を作成する方法を探ります。</p>
+<p><em>このノートブックは、<a class="reference external" href="https://github.com/uwdata/visualization-curriculum">データ可視化カリキュラム</a>の一部です。</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="datasets">
+<h2><span class="section-number">6.1. </span>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h2>
+<p>以下のデータセットを、<a class="reference external" href="https://github.com/vega/vega-datasets">vega-datasets</a>コレクションから可視化します：</p>
+<ul class="simple">
+<li><p>1970年代から1980年代初期の<code class="docutils literal notranslate"><span class="pre">cars</span></code>データセット</p></li>
+<li><p><a class="reference external" href="https://github.com/uwdata/visualization-curriculum/blob/master/altair_data_transformation.ipynb">データ変換</a>ノートブックで使用した<code class="docutils literal notranslate"><span class="pre">movies</span></code>データセット</p></li>
+<li><p>10年間の<a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500_Index">S&amp;P 500</a>（<code class="docutils literal notranslate"><span class="pre">sp500</span></code>）株価データセット</p></li>
+<li><p>テクノロジー企業の<code class="docutils literal notranslate"><span class="pre">stocks</span></code>データセット</p></li>
+<li><p>出発時刻、飛行距離、到着遅延を含む<code class="docutils literal notranslate"><span class="pre">flights</span></code>データセット</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cars</span> <span class="o">=</span> <span class="s1">&#39;https://cdn.jsdelivr.net/npm/vega-datasets@1/data/cars.json&#39;</span>
+<span class="n">movies</span> <span class="o">=</span> <span class="s1">&#39;https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json&#39;</span>
+<span class="n">sp500</span> <span class="o">=</span> <span class="s1">&#39;https://cdn.jsdelivr.net/npm/vega-datasets@1/data/sp500.csv&#39;</span>
+<span class="n">stocks</span> <span class="o">=</span> <span class="s1">&#39;https://cdn.jsdelivr.net/npm/vega-datasets@1/data/stocks.csv&#39;</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="s1">&#39;https://cdn.jsdelivr.net/npm/vega-datasets@1/data/flights-5k.json&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="introducing-selections">
+<h2><span class="section-number">6.2. </span>Introducing Selections<a class="headerlink" href="#introducing-selections" title="Link to this heading">#</a></h2>
+<p>以下の手順で、基本的な選択を実装してみましょう。単にポイントをクリックして、それをハイライトします。carsデータセットを使用して、馬力（horsepower）と1ガロンあたりの走行距離（miles per gallon）の散布図を作成し、エンジンのシリンダー数を色でエンコードします。</p>
+<p>また、alt.selection_single()を呼び出して選択インスタンスを作成します。これにより、_単一の値_を基準に定義された選択を行うことができます。デフォルトでは、マウスクリックで選択された値が決定されます。選択をチャートに登録するには、.add_selection()メソッドを使用して追加する必要があります。</p>
+<p>選択が定義されたら、それを_条件付きエンコーディング_のパラメータとして使用できます。条件付きエンコーディングでは、データレコードが選択に含まれるかどうかに応じて異なるエンコーディングを適用します。以下のコードを参考にしてください:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="s1">&#39;Cylinders:O&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>このエンコーディング定義では、<code class="docutils literal notranslate"><span class="pre">selection</span></code>に含まれるデータポイントは<code class="docutils literal notranslate"><span class="pre">Cylinder</span></code>フィールドに基づいて色付けされ、一方で選択されていないデータポイントはデフォルトの<code class="docutils literal notranslate"><span class="pre">grey</span></code>が使用されることを示しています。空の選択状態では、_すべての_データポイントが含まれるため、最初はすべてのポイントが色付けされます。</p>
+<p><em>以下のチャートで異なるポイントをクリックしてみてください。何が起こりますか？（背景をクリックすると選択状態がクリアされ、”空”の選択状態に戻ります。）</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selection</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">();</span>
+  
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">selection</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Horsepower:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Miles_per_Gallon:Q&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="s1">&#39;Cylinders:O&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)),</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: &#39;selection_single&#39; is deprecated.  Use &#39;selection_point&#39;
+  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)
+/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: &#39;add_selection&#39; is deprecated. Use &#39;add_params&#39; instead.
+  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+  #altair-viz-c604a024a9494602846eb232b2dd194b.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-c604a024a9494602846eb232b2dd194b.vega-embed details,
+  #altair-viz-c604a024a9494602846eb232b2dd194b.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-c604a024a9494602846eb232b2dd194b"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-c604a024a9494602846eb232b2dd194b") {
+      outputDiv = document.getElementById("altair-viz-c604a024a9494602846eb232b2dd194b");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/cars.json"}, "mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_1", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_1", "value": 0.8}, "value": 0.1}, "x": {"field": "Horsepower", "type": "quantitative"}, "y": {"field": "Miles_per_Gallon", "type": "quantitative"}}, "params": [{"name": "param_1", "select": {"type": "point"}}], "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>もちろん、一度に1つのデータポイントをハイライトするだけでは、それほど興味深くありません。しかし、単一値選択は、より強力なインタラクションのための有用な構成要素を提供します。さらに、単一値選択はAltairが提供する3種類の選択タイプの1つに過ぎません：</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">selection_single</span></code></strong> - 単一の離散値を選択します（デフォルトではクリックイベントに基づきます）。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">selection_multi</span></code></strong> - 複数の離散値を選択します。最初の値はマウスクリックで選択され、追加の値はシフト＋クリックでトグルします。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">selection_interval</span></code></strong> - 連続した値の範囲を選択します。マウスドラッグで開始します。</p></li>
+</ul>
+<p>これらの選択タイプを並べて比較してみましょう。コードを整理するために、最初に散布図仕様を生成する関数（<code class="docutils literal notranslate"><span class="pre">plot</span></code>）を定義します。この関数に選択を渡すことで、チャートに適用されるようにします:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">selection</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+        <span class="n">selection</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Horsepower:Q&#39;</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Miles_per_Gallon:Q&#39;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="s1">&#39;Cylinders:O&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)),</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">180</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code>関数を使用して、選択タイプごとに1つずつ、3つのチャートバリアントを作成してみましょう。</p>
+<ul class="simple">
+<li><p>**<code class="docutils literal notranslate"><span class="pre">single</span></code>**チャート：先ほどの例を再現します。</p></li>
+<li><p>**<code class="docutils literal notranslate"><span class="pre">multi</span></code>**チャート：シフト＋クリック操作をサポートし、複数のポイントを選択に含めることができます。</p></li>
+<li><p>**<code class="docutils literal notranslate"><span class="pre">interval</span></code>**チャート：マウスドラッグで選択領域（または_ブラシ_）を生成します。作成後、ブラシをドラッグして異なるポイントを選択したり、ブラシ内でスクロールしてブラシサイズをスケーリング（ズーム）することができます。</p></li>
+</ul>
+<p><em>以下の各チャートとインタラクションしてみてください！</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">hconcat</span><span class="p">(</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Single (Click)&#39;</span><span class="p">),</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">selection_multi</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Multi (Shift-Click)&#39;</span><span class="p">),</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Interval (Drag)&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: &#39;selection_multi&#39; is deprecated.  Use &#39;selection_point&#39;
+  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+  #altair-viz-a3d98af1535c42bd98c1a58fcda76b51.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a3d98af1535c42bd98c1a58fcda76b51.vega-embed details,
+  #altair-viz-a3d98af1535c42bd98c1a58fcda76b51.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a3d98af1535c42bd98c1a58fcda76b51"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a3d98af1535c42bd98c1a58fcda76b51") {
+      outputDiv = document.getElementById("altair-viz-a3d98af1535c42bd98c1a58fcda76b51");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "hconcat": [{"mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_2", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_2", "value": 0.8}, "value": 0.1}, "x": {"field": "Horsepower", "type": "quantitative"}, "y": {"field": "Miles_per_Gallon", "type": "quantitative"}}, "height": 180, "name": "view_1", "title": "Single (Click)", "width": 240}, {"mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_3", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_3", "value": 0.8}, "value": 0.1}, "x": {"field": "Horsepower", "type": "quantitative"}, "y": {"field": "Miles_per_Gallon", "type": "quantitative"}}, "height": 180, "name": "view_2", "title": "Multi (Shift-Click)", "width": 240}, {"mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_4", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_4", "value": 0.8}, "value": 0.1}, "x": {"field": "Horsepower", "type": "quantitative"}, "y": {"field": "Miles_per_Gallon", "type": "quantitative"}}, "height": 180, "name": "view_3", "title": "Interval (Drag)", "width": 240}], "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/cars.json"}, "params": [{"name": "param_2", "select": {"type": "point"}, "views": ["view_1"]}, {"name": "param_3", "select": {"type": "point"}, "views": ["view_2"]}, {"name": "param_4", "select": {"type": "interval"}, "views": ["view_3"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>上記の例では、各選択タイプのデフォルトのインタラクション（クリック、シフト＋クリック、ドラッグ）を使用していますが、<a class="reference external" href="https://vega.github.io/vega/docs/event-streams/">Vegaイベントセレクタ構文</a>を使用して、インタラクションをさらにカスタマイズできます。たとえば、<code class="docutils literal notranslate"><span class="pre">single</span></code>および<code class="docutils literal notranslate"><span class="pre">multi</span></code>チャートを修正して、<code class="docutils literal notranslate"><span class="pre">click</span></code>イベントの代わりに<code class="docutils literal notranslate"><span class="pre">mouseover</span></code>イベントでトリガーするように設定できます。</p>
+<p><em>2つ目のチャートでShiftキーを押しながらマウスを動かし、データで「ペイント」してみてください！</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">hconcat</span><span class="p">(</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;mouseover&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Single (Mouseover)&#39;</span><span class="p">),</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">selection_multi</span><span class="p">(</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;mouseover&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Multi (Shift-Mouseover)&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-799243e261664792aa4ade31f94c9e1e.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-799243e261664792aa4ade31f94c9e1e.vega-embed details,
+  #altair-viz-799243e261664792aa4ade31f94c9e1e.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-799243e261664792aa4ade31f94c9e1e"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-799243e261664792aa4ade31f94c9e1e") {
+      outputDiv = document.getElementById("altair-viz-799243e261664792aa4ade31f94c9e1e");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "hconcat": [{"mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_5", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_5", "value": 0.8}, "value": 0.1}, "x": {"field": "Horsepower", "type": "quantitative"}, "y": {"field": "Miles_per_Gallon", "type": "quantitative"}}, "height": 180, "name": "view_4", "title": "Single (Mouseover)", "width": 240}, {"mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_6", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_6", "value": 0.8}, "value": 0.1}, "x": {"field": "Horsepower", "type": "quantitative"}, "y": {"field": "Miles_per_Gallon", "type": "quantitative"}}, "height": 180, "name": "view_5", "title": "Multi (Shift-Mouseover)", "width": 240}], "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/cars.json"}, "params": [{"name": "param_5", "select": {"type": "point", "on": "mouseover"}, "views": ["view_4"]}, {"name": "param_6", "select": {"type": "point", "on": "mouseover"}, "views": ["view_5"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Altairの選択の基本を理解したところで、これから選択が可能にするさまざまなインタラクション技術を見ていきましょう！</p>
+</section>
+<section id="dynamic-queries">
+<h2><span class="section-number">6.3. </span>Dynamic Queries<a class="headerlink" href="#dynamic-queries" title="Link to this heading">#</a></h2>
+<p>_動的クエリ_は、関心のあるパターンを特定するためのデータの迅速かつ可逆的な探索を可能にします。<a class="reference external" href="https://www.cs.umd.edu/~ben/papers/Ahlberg1992Dynamic.pdf">Ahlberg, Williamson, &amp; Shneiderman</a>によって定義された動的クエリは以下を特徴とします：</p>
+<ul class="simple">
+<li><p>クエリを視覚的に表現する</p></li>
+<li><p>クエリ範囲の明確な制限を提供する</p></li>
+<li><p>データとクエリ結果の視覚的表現を提供する</p></li>
+<li><p>クエリ調整後に即時フィードバックを提供する</p></li>
+<li><p>初心者がほとんどトレーニングなしで作業を開始できるようにする</p></li>
+</ul>
+<p>一般的なアプローチとして、スライダー、ラジオボタン、ドロップダウンメニューなどの標準的なユーザーインターフェースウィジェットを使用してクエリパラメータを操作します。動的クエリウィジェットを生成するには、選択の<code class="docutils literal notranslate"><span class="pre">bind</span></code>操作を、クエリしたい1つ以上のデータフィールドに適用します。</p>
+<p>映画の評価（Rotten TomatoesとIMDB）をプロットした散布図を例に、動的クエリを使用して表示をフィルタリングするインタラクティブな散布図を作成してみましょう。<code class="docutils literal notranslate"><span class="pre">Major_Genre</span></code>フィールドを選択に追加し、映画ジャンルでのインタラクティブなフィルタリングを可能にします。</p>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">movies</span></code>データからユニーク（非ヌル）のジャンルを抽出してみましょう:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span> <span class="c1"># load movies data</span>
+<span class="n">genres</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="c1"># get unique field values</span>
+<span class="n">genres</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="n">genres</span><span class="p">))</span> <span class="c1"># filter out None values</span>
+<span class="n">genres</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="c1"># sort alphabetically</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>後で使用するために、<code class="docutils literal notranslate"><span class="pre">MPAA_Rating</span></code>フィールドのユニークな値のリストも定義しておきましょう:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpaa</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;PG&#39;</span><span class="p">,</span> <span class="s1">&#39;PG-13&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;NC-17&#39;</span><span class="p">,</span> <span class="s1">&#39;Not Rated&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>次に、ドロップダウンメニューにバインドされた<code class="docutils literal notranslate"><span class="pre">single</span></code>選択を作成します。</p>
+<p><em>以下の動的クエリメニューを使用してデータを探索してください。評価はジャンルによってどのように変化しますか？コードをどのように修正すれば、<code class="docutils literal notranslate"><span class="pre">Major_Genre</span></code>ではなく<code class="docutils literal notranslate"><span class="pre">MPAA_Rating</span></code>（G、PG、PG-13など）をフィルタリングすることができますか？</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selectGenre</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Select&#39;</span><span class="p">,</span> <span class="c1"># name the selection &#39;Select&#39;</span>
+    <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">],</span> <span class="c1"># limit selection to the Major_Genre field</span>
+    <span class="n">init</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">:</span> <span class="n">genres</span><span class="p">[</span><span class="mi">0</span><span class="p">]},</span> <span class="c1"># use first genre entry as initial value</span>
+    <span class="n">bind</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">binding_select</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">genres</span><span class="p">)</span> <span class="c1"># bind to a menu of unique genre values</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">selectGenre</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Title:N&#39;</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selectGenre</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: &#39;selection_single&#39; is deprecated.  Use &#39;selection_point&#39;
+  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)
+/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:417: AltairDeprecationWarning: Use &#39;value&#39; instead of &#39;init&#39;.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">selectGenre</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Select&#39;</span><span class="p">,</span> <span class="c1"># name the selection &#39;Select&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">],</span> <span class="c1"># limit selection to the Major_Genre field</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">init</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">:</span> <span class="n">genres</span><span class="p">[</span><span class="mi">0</span><span class="p">]},</span> <span class="c1"># use first genre entry as initial value</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">bind</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">binding_select</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">genres</span><span class="p">)</span> <span class="c1"># bind to a menu of unique genre values</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">selectGenre</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selectGenre</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:66,</span> in <span class="ni">_deprecate.&lt;locals&gt;.new_obj</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">def</span><span class="w"> </span><span class="nf">new_obj</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">AltairDeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">66</span>     <span class="k">return</span> <span class="n">obj</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:753,</span> in <span class="ni">selection_single</span><span class="nt">(**kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">747</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">deprecation</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">748</span>     <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&#39;selection_single&#39; is deprecated.  Use &#39;selection_point&#39;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">use_signature</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">PointSelectionConfig</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">751</span> <span class="k">def</span><span class="w"> </span><span class="nf">selection_single</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">752</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;&#39;selection_single&#39; is deprecated.  Use &#39;selection_point&#39;&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">753</span>     <span class="k">return</span> <span class="n">_selection</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;point&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:478,</span> in <span class="ni">_selection</span><span class="nt">(type, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&#39;type&#39; must be &#39;point&#39; or &#39;interval&#39;&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">478</span> <span class="k">return</span> <span class="n">param</span><span class="p">(</span><span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="o">**</span><span class="n">param_kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:444,</span> in <span class="ni">param</span><span class="nt">(name, value, bind, empty, expr, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>     <span class="n">parameter</span><span class="o">.</span><span class="n">param_type</span> <span class="o">=</span> <span class="s2">&quot;selection&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">444</span>     <span class="n">parameter</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">SelectionParameter</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>         <span class="n">name</span><span class="o">=</span><span class="n">parameter</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">bind</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="n">parameter</span><span class="o">.</span><span class="n">param_type</span> <span class="o">=</span> <span class="s2">&quot;selection&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">return</span> <span class="n">parameter</span>
+
+<span class="ne">TypeError</span>: altair.vegalite.v5.schema.core.SelectionParameter() got multiple values for keyword argument &#39;value&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>上記の構成では、選択の複数の側面を活用しています:</p>
+<ul class="simple">
+<li><p>選択に名前（<code class="docutils literal notranslate"><span class="pre">'Select'</span></code>）を付けています。この名前は必須ではありませんが、生成された動的クエリメニューのラベルテキストに影響を与えることができます。（<em>名前を削除するとどうなりますか？試してみてください！</em>）</p></li>
+<li><p>選択を特定のデータフィールド（<code class="docutils literal notranslate"><span class="pre">Major_Genre</span></code>）に制約しています。以前に<code class="docutils literal notranslate"><span class="pre">single</span></code>選択を使用したときは、選択は個々のデータポイントにマッピングされていましたが、選択を特定のフィールドに制限することで、<code class="docutils literal notranslate"><span class="pre">Major_Genre</span></code>フィールド値が選択した値と一致する_すべての_データポイントを選択できます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">init=...</span></code>を使用して、選択に初期値を設定しています。</p></li>
+<li><p>選択をインターフェースウィジェットに<code class="docutils literal notranslate"><span class="pre">bind</span></code>しています。この場合、<code class="docutils literal notranslate"><span class="pre">binding_select</span></code>を介してドロップダウンメニューにバインドしています。</p></li>
+<li><p>これまでと同様に、条件付きエンコーディングを使用して、不透明度チャネルを制御しています。</p></li>
+</ul>
+<section id="id2">
+<h3><span class="section-number">6.3.1. </span>複数の入力に選択をバインド<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>1つの選択インスタンスを_複数_の動的クエリウィジェットにバインドすることができます。上記の例を修正して、<code class="docutils literal notranslate"><span class="pre">Major_Genre</span></code>と<code class="docutils literal notranslate"><span class="pre">MPAA_Rating</span></code>の両方のフィルタを提供し、メニューではなくラジオボタンを使用します。この場合、<code class="docutils literal notranslate"><span class="pre">single</span></code>選択はジャンルとMPAAレーティング値の単一の_ペア_に対して定義されます。</p>
+<p><em>ジャンルとレーティングの驚くべき組み合わせを探してください。GまたはPGレーティングのホラー映画はありますか？</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># single-value selection over [Major_Genre, MPAA_Rating] pairs</span>
+<span class="c1"># use specific hard-wired values as the initial selected values</span>
+<span class="n">selection</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Select&#39;</span><span class="p">,</span>
+    <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">,</span> <span class="s1">&#39;MPAA_Rating&#39;</span><span class="p">],</span>
+    <span class="n">init</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">:</span> <span class="s1">&#39;Drama&#39;</span><span class="p">,</span> <span class="s1">&#39;MPAA_Rating&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">},</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">:</span> <span class="n">alt</span><span class="o">.</span><span class="n">binding_select</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">genres</span><span class="p">),</span> <span class="s1">&#39;MPAA_Rating&#39;</span><span class="p">:</span> <span class="n">alt</span><span class="o">.</span><span class="n">binding_radio</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">mpaa</span><span class="p">)}</span>
+<span class="p">)</span>
+  
+<span class="c1"># scatter plot, modify opacity based on selection</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">selection</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Title:N&#39;</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># single-value selection over [Major_Genre, MPAA_Rating] pairs</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># use specific hard-wired values as the initial selected values</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">selection</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Select&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">,</span> <span class="s1">&#39;MPAA_Rating&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">init</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">:</span> <span class="s1">&#39;Drama&#39;</span><span class="p">,</span> <span class="s1">&#39;MPAA_Rating&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">},</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">bind</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Major_Genre&#39;</span><span class="p">:</span> <span class="n">alt</span><span class="o">.</span><span class="n">binding_select</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">genres</span><span class="p">),</span> <span class="s1">&#39;MPAA_Rating&#39;</span><span class="p">:</span> <span class="n">alt</span><span class="o">.</span><span class="n">binding_radio</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">mpaa</span><span class="p">)}</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># scatter plot, modify opacity based on selection</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">selection</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">selection</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:66,</span> in <span class="ni">_deprecate.&lt;locals&gt;.new_obj</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">def</span><span class="w"> </span><span class="nf">new_obj</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">AltairDeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">66</span>     <span class="k">return</span> <span class="n">obj</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:753,</span> in <span class="ni">selection_single</span><span class="nt">(**kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">747</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">deprecation</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">748</span>     <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&#39;selection_single&#39; is deprecated.  Use &#39;selection_point&#39;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span> <span class="nd">@utils</span><span class="o">.</span><span class="n">use_signature</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">PointSelectionConfig</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">751</span> <span class="k">def</span><span class="w"> </span><span class="nf">selection_single</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">752</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;&#39;selection_single&#39; is deprecated.  Use &#39;selection_point&#39;&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">753</span>     <span class="k">return</span> <span class="n">_selection</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;point&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:478,</span> in <span class="ni">_selection</span><span class="nt">(type, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;&#39;type&#39; must be &#39;point&#39; or &#39;interval&#39;&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">478</span> <span class="k">return</span> <span class="n">param</span><span class="p">(</span><span class="n">select</span><span class="o">=</span><span class="n">select</span><span class="p">,</span> <span class="o">**</span><span class="n">param_kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:444,</span> in <span class="ni">param</span><span class="nt">(name, value, bind, empty, expr, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>     <span class="n">parameter</span><span class="o">.</span><span class="n">param_type</span> <span class="o">=</span> <span class="s2">&quot;selection&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">444</span>     <span class="n">parameter</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">core</span><span class="o">.</span><span class="n">SelectionParameter</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>         <span class="n">name</span><span class="o">=</span><span class="n">parameter</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">bind</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">expr</span><span class="o">=</span><span class="n">expr</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="n">parameter</span><span class="o">.</span><span class="n">param_type</span> <span class="o">=</span> <span class="s2">&quot;selection&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">return</span> <span class="n">parameter</span>
+
+<span class="ne">TypeError</span>: altair.vegalite.v5.schema.core.SelectionParameter() got multiple values for keyword argument &#39;value&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>豆知識: 映画『<a class="reference external" href="https://www.imdb.com/title/tt0073195/">ジョーズ (Jaws)</a>』や『<a class="reference external" href="https://www.imdb.com/title/tt0077766/">ジョーズ2 (Jaws 2)</a>』が公開された当時、PG-13のレーティングは存在していませんでした。初めてPG-13のレーティングを受けた映画は、1984年の『<a class="reference external" href="https://www.imdb.com/title/tt0087985/">若き勇者たち (Red Dawn)</a>』でした。</em></p>
+</section>
+<section id="id3">
+<h3><span class="section-number">6.3.2. </span>ビジュアライゼーションを動的クエリとして使用する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>標準的なインターフェースウィジェットは、_可能な_クエリパラメータの値を表示しますが、これらの値の_分布_を視覚化することはできません。また、1回に1つの値しか選択できない入力ウィジェットではなく、マルチバリューや範囲選択など、よりリッチなインタラクションを使用したい場合もあります。</p>
+<p>これらの課題に対応するために、データを視覚化しながら動的クエリをサポートする追加のチャートを作成することができます。映画の年間ごとの本数のヒストグラムを追加し、範囲選択を使用して選択した期間中の映画を動的にハイライトしてみましょう。</p>
+<p><em>年ごとのヒストグラムとインタラクションして、さまざまな時代の映画を探索してください。年をまたいだ<a class="reference external" href="https://en.wikipedia.org/wiki/Sampling_bias">サンプリングバイアス</a>の証拠が見られますか？（年と評論家の評価にはどのような関係がありますか？）</em></p>
+<p><em>1930年から2040年までの年が含まれています！未来の映画が制作準備中なのでしょうか、それとも「1世紀の誤差」があるのでしょうか？また、タイムゾーンによっては1969年または1970年に小さなピークが表示されることがあります。なぜそのようなことが起こるのでしょうか？（ノートブックの最後で説明があります！）</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brush</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span>
+    <span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="c1"># limit selection to x-axis (year) values</span>
+<span class="p">)</span>
+
+<span class="c1"># dynamic query histogram</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">brush</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;year(Release_Date):T&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Films by Release Year&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count():Q&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+
+<span class="c1"># scatter plot, modify opacity based on selection</span>
+<span class="n">ratings</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Title:N&#39;</span><span class="p">,</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">brush</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.75</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">vconcat</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">ratings</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">spacing</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: &#39;add_selection&#39; is deprecated. Use &#39;add_params&#39; instead.
+  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+  #altair-viz-2fd983b698fe4b30b440e8071f02db13.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-2fd983b698fe4b30b440e8071f02db13.vega-embed details,
+  #altair-viz-2fd983b698fe4b30b440e8071f02db13.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-2fd983b698fe4b30b440e8071f02db13"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-2fd983b698fe4b30b440e8071f02db13") {
+      outputDiv = document.getElementById("altair-viz-2fd983b698fe4b30b440e8071f02db13");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"mark": {"type": "bar"}, "encoding": {"x": {"field": "Release_Date", "timeUnit": "year", "title": "Films by Release Year", "type": "temporal"}, "y": {"aggregate": "count", "title": null, "type": "quantitative"}}, "height": 50, "name": "view_6", "width": 650}, {"mark": {"type": "circle"}, "encoding": {"opacity": {"condition": {"param": "param_7", "value": 0.75}, "value": 0.05}, "tooltip": {"field": "Title", "type": "nominal"}, "x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"field": "IMDB_Rating", "type": "quantitative"}}, "height": 400, "width": 650}], "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json"}, "params": [{"name": "param_7", "select": {"type": "interval", "encodings": ["x"]}, "views": ["view_6"]}], "spacing": 5, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>上記の例では、チャート間の_リンクされた選択_を使用して動的クエリを提供しています：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interval</span></code>選択（<code class="docutils literal notranslate"><span class="pre">brush</span></code>）を作成し、<code class="docutils literal notranslate"><span class="pre">encodings=['x']</span></code>を設定して選択をx軸のみに制限し、1次元の選択範囲を作成します。</p></li>
+<li><p>年ごとの映画本数のヒストグラムに対して、<code class="docutils literal notranslate"><span class="pre">.add_selection(brush)</span></code>を使用して<code class="docutils literal notranslate"><span class="pre">brush</span></code>を登録します。</p></li>
+<li><p>条件付きエンコーディングで<code class="docutils literal notranslate"><span class="pre">brush</span></code>を使用し、散布図の<code class="docutils literal notranslate"><span class="pre">opacity</span></code>を調整します。</p></li>
+</ul>
+<p>このように、1つのチャートで要素を選択し、他の1つまたは複数のチャートでリンクされたハイライトを表示するインタラクション技術は、<a class="reference external" href="https://en.wikipedia.org/wiki/Brushing_and_linking"><em>ブラッシング＆リンク (Brushing &amp; Linking)</em></a>と呼ばれます。</p>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">6.4. </span>パン＆ズーム<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>映画の評価散布図は、一部の場所で密集しており、より密な領域のポイントを詳しく調べるのが難しい場合があります。_パン_や_ズーム_といったインタラクション技術を使用すると、密集した領域をより詳細に調べることができます。</p>
+<p>まず、Altairの選択を使用してパンとズームをどのように表現するかを考えてみましょう。チャートの「ビューポート」を定義するものは何でしょうか？ <em>軸のスケールドメインです！</em></p>
+<p>スケールドメインを変更することで、視覚化されるデータ値の範囲を変更できます。これをインタラクティブに行うには、<code class="docutils literal notranslate"><span class="pre">interval</span></code>選択をスケールドメインにバインドし、コードで<code class="docutils literal notranslate"><span class="pre">bind='scales'</span></code>を指定します。その結果、ドラッグやズーム可能なブラシではなく、プロットエリア全体をドラッグやズームで移動できるようになります。</p>
+<p><em>以下のチャートで、ビューをパン（平行移動）するためにクリック＆ドラッグしたり、ズーム（拡大縮小）するためにスクロールしてください。提供された評価値の精度について何か新しい発見がありますか？</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="s1">&#39;scales&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">minExtent</span><span class="o">=</span><span class="mi">30</span><span class="p">)),</span> <span class="c1"># use min extent to stabilize axis title placement</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Title:N&#39;</span><span class="p">,</span> <span class="s1">&#39;Release_Date:N&#39;</span><span class="p">,</span> <span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span> <span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-497c8bc7237840738ae8fddd45e84bbf.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-497c8bc7237840738ae8fddd45e84bbf.vega-embed details,
+  #altair-viz-497c8bc7237840738ae8fddd45e84bbf.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-497c8bc7237840738ae8fddd45e84bbf"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-497c8bc7237840738ae8fddd45e84bbf") {
+      outputDiv = document.getElementById("altair-viz-497c8bc7237840738ae8fddd45e84bbf");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json"}, "mark": {"type": "circle"}, "encoding": {"tooltip": [{"field": "Title", "type": "nominal"}, {"field": "Release_Date", "type": "nominal"}, {"field": "IMDB_Rating", "type": "quantitative"}, {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}], "x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"axis": {"minExtent": 30}, "field": "IMDB_Rating", "type": "quantitative"}}, "height": 400, "params": [{"name": "param_8", "select": {"type": "interval"}, "bind": "scales"}], "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p><em>ズームインすると、評価値の精度が限られていることがわかります！Rotten Tomatoesの評価は整数で、IMDBの評価は小数点第1位まで切り捨てられています。その結果、ズームしても同じ評価値を持つ複数の映画が重なって表示されます（オーバープロット）。</em></p>
+<p>上記のコードを読むと、<code class="docutils literal notranslate"><span class="pre">y</span></code>エンコーディングチャネルで<code class="docutils literal notranslate"><span class="pre">alt.Axis(minExtent=30)</span></code>というコードがあることに気づくかもしれません。<code class="docutils literal notranslate"><span class="pre">minExtent</span></code>パラメータは、軸の目盛りやラベルのために最低限のスペースを確保するようにします。なぜこれをするのでしょうか？パンやズームを行うと、軸ラベルが変化し、軸タイトルの位置がシフトする可能性があります。<code class="docutils literal notranslate"><span class="pre">minExtent</span></code>を設定することで、プロット内の気を散らすような動きを減らすことができます。<em><code class="docutils literal notranslate"><span class="pre">minExtent</span></code>の値を変更してみてください（たとえば、ゼロに設定してください）。その後ズームアウトして、長い軸ラベルが表示領域に入ると何が起こるか確認してください。</em></p>
+<p>Altairには、プロットにパン＆ズーム機能を追加するための簡略化された方法も用意されています。選択を直接作成する代わりに、<code class="docutils literal notranslate"><span class="pre">.interactive()</span></code>を呼び出すことで、Altairがチャートのスケールにバインドされたインターバル選択を自動的に生成します:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">minExtent</span><span class="o">=</span><span class="mi">30</span><span class="p">)),</span> <span class="c1"># use min extent to stabilize axis title placement</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Title:N&#39;</span><span class="p">,</span> <span class="s1">&#39;Release_Date:N&#39;</span><span class="p">,</span> <span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span> <span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+<span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-00040b76cff34a33a9ae7e60f8482b66.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-00040b76cff34a33a9ae7e60f8482b66.vega-embed details,
+  #altair-viz-00040b76cff34a33a9ae7e60f8482b66.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-00040b76cff34a33a9ae7e60f8482b66"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-00040b76cff34a33a9ae7e60f8482b66") {
+      outputDiv = document.getElementById("altair-viz-00040b76cff34a33a9ae7e60f8482b66");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json"}, "mark": {"type": "circle"}, "encoding": {"tooltip": [{"field": "Title", "type": "nominal"}, {"field": "Release_Date", "type": "nominal"}, {"field": "IMDB_Rating", "type": "quantitative"}, {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}], "x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"axis": {"minExtent": 30}, "field": "IMDB_Rating", "type": "quantitative"}}, "height": 400, "params": [{"name": "param_9", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>デフォルトでは、選択のスケールバインディングには<code class="docutils literal notranslate"><span class="pre">x</span></code>および<code class="docutils literal notranslate"><span class="pre">y</span></code>の両方のエンコーディングチャネルが含まれています。しかし、パンとズームを1つの次元（軸）に制限したい場合はどうすればよいでしょうか？<code class="docutils literal notranslate"><span class="pre">encodings=['x']</span></code>を指定することで、選択を<code class="docutils literal notranslate"><span class="pre">x</span></code>チャネルのみに制限することができます:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="s1">&#39;scales&#39;</span><span class="p">,</span> <span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">minExtent</span><span class="o">=</span><span class="mi">30</span><span class="p">)),</span> <span class="c1"># use min extent to stabilize axis title placement</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Title:N&#39;</span><span class="p">,</span> <span class="s1">&#39;Release_Date:N&#39;</span><span class="p">,</span> <span class="s1">&#39;IMDB_Rating:Q&#39;</span><span class="p">,</span> <span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-ab3869d851b3421e8f5ff308cd8f85a8.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-ab3869d851b3421e8f5ff308cd8f85a8.vega-embed details,
+  #altair-viz-ab3869d851b3421e8f5ff308cd8f85a8.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-ab3869d851b3421e8f5ff308cd8f85a8"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-ab3869d851b3421e8f5ff308cd8f85a8") {
+      outputDiv = document.getElementById("altair-viz-ab3869d851b3421e8f5ff308cd8f85a8");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json"}, "mark": {"type": "circle"}, "encoding": {"tooltip": [{"field": "Title", "type": "nominal"}, {"field": "Release_Date", "type": "nominal"}, {"field": "IMDB_Rating", "type": "quantitative"}, {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}], "x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"axis": {"minExtent": 30}, "field": "IMDB_Rating", "type": "quantitative"}}, "height": 400, "params": [{"name": "param_10", "select": {"type": "interval", "encodings": ["x"]}, "bind": "scales"}], "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p><em>単一の軸に沿ってズームする場合、可視化されたデータの形状が変化し、データ内の関係性の認識に影響を与える可能性があります。<a class="reference external" href="http://vis.stanford.edu/papers/arclength-banking">適切なアスペクト比を選択する</a>ことは、重要なビジュアライゼーションデザインの課題です！</em></p>
+</section>
+<section id="id5">
+<h2><span class="section-number">6.5. </span>ナビゲーション: オーバービュー + ディテール<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>パンおよびズームでは、チャートの「ビューポート」を直接調整します。一方、_オーバービュー + ディテール_という関連するナビゲーション戦略では、オーバービュー表示を使用して_すべて_のデータを表示し、選択を通じて別のフォーカス表示をパンおよびズームできるようにします。</p>
+<p>以下では、S&amp;P 500株価指数の10年間の価格変動を示す2つのエリアチャートを表示しています。初期状態では、両方のチャートが同じデータ範囲を表示します。<em>下部のオーバービュー チャートでクリック＆ドラッグして、フォーカス表示を更新し、特定の時間範囲を調べてください。</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brush</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]);</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_area</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;date:T&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;price:Q&#39;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">700</span>
+<span class="p">)</span>
+  
+<span class="n">alt</span><span class="o">.</span><span class="n">vconcat</span><span class="p">(</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;date:T&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">brush</span><span class="p">))),</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">brush</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">60</span><span class="p">),</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">sp500</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-090b6bdabae24abb84204767a548883e.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-090b6bdabae24abb84204767a548883e.vega-embed details,
+  #altair-viz-090b6bdabae24abb84204767a548883e.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-090b6bdabae24abb84204767a548883e"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-090b6bdabae24abb84204767a548883e") {
+      outputDiv = document.getElementById("altair-viz-090b6bdabae24abb84204767a548883e");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "vconcat": [{"mark": {"type": "area"}, "encoding": {"x": {"field": "date", "scale": {"domain": {"param": "param_11"}}, "title": null, "type": "temporal"}, "y": {"field": "price", "type": "quantitative"}}, "width": 700}, {"mark": {"type": "area"}, "encoding": {"x": {"field": "date", "title": null, "type": "temporal"}, "y": {"field": "price", "type": "quantitative"}}, "height": 60, "name": "view_7", "width": 700}], "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/sp500.csv"}, "params": [{"name": "param_11", "select": {"type": "interval", "encodings": ["x"]}, "views": ["view_7"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>以前のパン＆ズームのケースとは異なり、ここでは単一のインタラクティブチャートのスケールに選択を直接バインドするのではなく、選択を_別のチャート_のスケールドメインにバインドしたいと考えています。そのためには、フォーカスチャートの<code class="docutils literal notranslate"><span class="pre">x</span></code>エンコーディングチャネルを更新し、スケールの<code class="docutils literal notranslate"><span class="pre">domain</span></code>プロパティに<code class="docutils literal notranslate"><span class="pre">brush</span></code>選択を参照するよう設定します。</p>
+<p>選択範囲が未定義（選択が空）である場合、Altairはブラシを無視し、基礎となるデータを使用してドメインを決定します。一方、ブラシ範囲が作成されると、Altairはその範囲をフォーカスチャートのスケール<code class="docutils literal notranslate"><span class="pre">domain</span></code>として使用します。</p>
+</section>
+<section id="id6">
+<h2><span class="section-number">6.6. </span>オンデマンド詳細表示<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>一度可視化の中で興味深いポイントを見つけたら、それらについてもっと詳しく知りたくなることがよくあります。_オンデマンド詳細表示_は、選択された値についてより多くの情報をインタラクティブに照会する方法を指します。_ツールチップ_は、オンデマンドで詳細を提供する便利な手段の1つです。しかし、ツールチップは通常、1回に1つのデータポイントの情報しか表示しません。もっと多くの情報を表示するにはどうすればよいでしょうか？</p>
+<p>映画の評価散布図には、Rotten TomatoesとIMDBの評価が一致しない興味深い外れ値がいくつか含まれています。インタラクティブにポイントを選択し、そのラベルを表示するプロットを作成しましょう。ホバーまたはクリックインタラクションのどちらでもフィルタクエリをトリガーするために、<a class="reference external" href="https://altair-viz.github.io/user_guide/interactions.html#composing-multiple-selections">Altairの構成演算子</a> <code class="docutils literal notranslate"><span class="pre">|</span></code>（”または”）を使用します。</p>
+<p><em>以下の散布図でポイントにマウスを移動すると、ハイライトとタイトルラベルが表示されます。Shiftキーを押しながらクリックすると、注釈が永続化され、複数のラベルを一度に表示できます。Rotten Tomatoesの批評家に愛される一方で、IMDBの一般観客には支持されない映画（またはその逆）はどれですか？同じ名前を持つ2つの異なる映画が誤って統合された可能性のあるエラーを見つけてみてください！</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hover</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span>
+    <span class="n">on</span><span class="o">=</span><span class="s1">&#39;mouseover&#39;</span><span class="p">,</span>  <span class="c1"># select on mouseover</span>
+    <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># select nearest point to mouse cursor</span>
+    <span class="n">empty</span><span class="o">=</span><span class="s1">&#39;none&#39;</span>     <span class="c1"># empty selection should match nothing</span>
+<span class="p">)</span>
+
+<span class="n">click</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_multi</span><span class="p">(</span>
+    <span class="n">empty</span><span class="o">=</span><span class="s1">&#39;none&#39;</span> <span class="c1"># empty selection matches no points</span>
+<span class="p">)</span>
+
+<span class="c1"># scatter plot encodings shared by all marks</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rotten_Tomatoes_Rating:Q&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;IMDB_Rating:Q&#39;</span>
+<span class="p">)</span>
+  
+<span class="c1"># shared base for new layers</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span>
+    <span class="n">hover</span> <span class="o">|</span> <span class="n">click</span> <span class="c1"># filter to points in either selection</span>
+<span class="p">)</span>
+
+<span class="c1"># layer scatter plot points, halo annotations, and title labels</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="n">plot</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">hover</span><span class="p">)</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">click</span><span class="p">),</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="n">strokeWidth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">dx</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">8</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">strokeWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Title:N&#39;</span><span class="p">),</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">dx</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">8</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Title:N&#39;</span><span class="p">),</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">movies</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">450</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/vegalite/v5/api.py:398: AltairDeprecationWarning: The value of &#39;empty&#39; should be True or False.
+  warnings.warn(
+/Users/yuichiyazaki/.pyenv/versions/miniforge3-4.10.3-10/lib/python3.9/site-packages/altair/utils/deprecation.py:65: AltairDeprecationWarning: &#39;selection_multi&#39; is deprecated.  Use &#39;selection_point&#39;
+  warnings.warn(message, AltairDeprecationWarning, stacklevel=1)
+</pre></div>
+</div>
+<div class="output text_html">
+<style>
+  #altair-viz-fe9eef20fea74008b09559f1e9be8a0f.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-fe9eef20fea74008b09559f1e9be8a0f.vega-embed details,
+  #altair-viz-fe9eef20fea74008b09559f1e9be8a0f.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-fe9eef20fea74008b09559f1e9be8a0f"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-fe9eef20fea74008b09559f1e9be8a0f") {
+      outputDiv = document.getElementById("altair-viz-fe9eef20fea74008b09559f1e9be8a0f");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"mark": {"type": "circle"}, "encoding": {"x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"field": "IMDB_Rating", "type": "quantitative"}}, "name": "view_8"}, {"mark": {"type": "point", "size": 100, "stroke": "firebrick", "strokeWidth": 1}, "encoding": {"x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"field": "IMDB_Rating", "type": "quantitative"}}, "transform": [{"filter": {"or": [{"param": "param_12"}, {"param": "param_13"}]}}]}, {"mark": {"type": "text", "align": "right", "dx": 4, "dy": -8, "stroke": "white", "strokeWidth": 2}, "encoding": {"text": {"field": "Title", "type": "nominal"}, "x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"field": "IMDB_Rating", "type": "quantitative"}}, "transform": [{"filter": {"or": [{"param": "param_12"}, {"param": "param_13"}]}}]}, {"mark": {"type": "text", "align": "right", "dx": 4, "dy": -8}, "encoding": {"text": {"field": "Title", "type": "nominal"}, "x": {"field": "Rotten_Tomatoes_Rating", "type": "quantitative"}, "y": {"field": "IMDB_Rating", "type": "quantitative"}}, "transform": [{"filter": {"or": [{"param": "param_12"}, {"param": "param_13"}]}}]}], "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/movies.json"}, "height": 450, "params": [{"name": "param_12", "select": {"type": "point", "nearest": true, "on": "mouseover"}, "views": ["view_8"]}, {"name": "param_13", "select": {"type": "point"}, "views": ["view_8"]}], "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>上記の例では、散布図に次の3つの新しいレイヤーを追加しています：</p>
+<ol class="arabic simple">
+<li><p>円形の注釈（アノテーション）。</p></li>
+<li><p>視認性を高めるための白い背景テキスト。</p></li>
+<li><p>映画タイトルを表示する黒いテキスト。</p></li>
+</ol>
+<p>さらに、この例では2つの選択を組み合わせて使用しています：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nearest=True</span></code>を含むシングル選択（<code class="docutils literal notranslate"><span class="pre">hover</span></code>）。これは、マウスが移動すると自動的に最も近いデータポイントを選択します。</p></li>
+<li><p>シフトクリックで永続的な選択を作成するマルチ選択（<code class="docutils literal notranslate"><span class="pre">click</span></code>）。</p></li>
+</ol>
+<p>両方の選択で<code class="docutils literal notranslate"><span class="pre">empty='none'</span></code>が設定されており、選択が空の場合はポイントを含めないことを示しています。これらの選択は1つのフィルタ条件に結合されます。つまり、<code class="docutils literal notranslate"><span class="pre">hover</span></code>または<code class="docutils literal notranslate"><span class="pre">click</span></code>の論理的な_または_（<code class="docutils literal notranslate"><span class="pre">or</span></code>）を使用して、いずれかの選択に含まれるポイントを含めます。この条件を使用して、新しいレイヤーをフィルタリングし、選択されたポイントに対してのみ注釈とラベルを表示します。</p>
+<p>選択とレイヤーを使用することで、オンデマンドで詳細を表示するためのさまざまなデザインを実現できます！例えば、以下はテクノロジー株価のログスケールの時系列チャートで、マウスカーソルに最も近い日付にガイドラインとラベルを付けたものです:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select a point for which to provide details-on-demand</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_single</span><span class="p">(</span>
+    <span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="c1"># limit selection to x-axis value</span>
+    <span class="n">on</span><span class="o">=</span><span class="s1">&#39;mouseover&#39;</span><span class="p">,</span>  <span class="c1"># select on mouseover events</span>
+    <span class="n">nearest</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># select data point nearest the cursor</span>
+    <span class="n">empty</span><span class="o">=</span><span class="s1">&#39;none&#39;</span>     <span class="c1"># empty selection includes no data points</span>
+<span class="p">)</span>
+
+<span class="c1"># define our base line chart of stock prices</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;date:T&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;price:Q&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="s1">&#39;symbol:N&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="n">base</span><span class="p">,</span> <span class="c1"># base line chart</span>
+    
+    <span class="c1"># add a rule mark to serve as a guide line</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_rule</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#aaa&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">&#39;date:T&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="n">label</span><span class="p">),</span>
+    
+    <span class="c1"># add circle marks for selected time points, hide unselected points</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">label</span><span class="p">),</span>
+
+    <span class="c1"># add white stroked text to provide a legible background for labels</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">stroke</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">strokeWidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">text</span><span class="o">=</span><span class="s1">&#39;price:Q&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="n">label</span><span class="p">),</span>
+
+    <span class="c1"># add text labels for stock prices</span>
+    <span class="n">base</span><span class="o">.</span><span class="n">mark_text</span><span class="p">(</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">dy</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+        <span class="n">text</span><span class="o">=</span><span class="s1">&#39;price:Q&#39;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="n">label</span><span class="p">),</span>
+    
+    <span class="n">data</span><span class="o">=</span><span class="n">stocks</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">400</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-8e282145c4ed43348d219903580bc6ff.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-8e282145c4ed43348d219903580bc6ff.vega-embed details,
+  #altair-viz-8e282145c4ed43348d219903580bc6ff.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-8e282145c4ed43348d219903580bc6ff"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-8e282145c4ed43348d219903580bc6ff") {
+      outputDiv = document.getElementById("altair-viz-8e282145c4ed43348d219903580bc6ff");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"mark": {"type": "line"}, "encoding": {"color": {"field": "symbol", "type": "nominal"}, "x": {"field": "date", "type": "temporal"}, "y": {"field": "price", "scale": {"type": "log"}, "type": "quantitative"}}}, {"mark": {"type": "rule", "color": "#aaa"}, "encoding": {"x": {"field": "date", "type": "temporal"}}, "transform": [{"filter": {"param": "param_14", "empty": false}}]}, {"mark": {"type": "circle"}, "encoding": {"color": {"field": "symbol", "type": "nominal"}, "opacity": {"condition": {"param": "param_14", "value": 1, "empty": false}, "value": 0}, "x": {"field": "date", "type": "temporal"}, "y": {"field": "price", "scale": {"type": "log"}, "type": "quantitative"}}, "name": "view_9"}, {"mark": {"type": "text", "align": "left", "dx": 5, "dy": -5, "stroke": "white", "strokeWidth": 2}, "encoding": {"color": {"field": "symbol", "type": "nominal"}, "text": {"field": "price", "type": "quantitative"}, "x": {"field": "date", "type": "temporal"}, "y": {"field": "price", "scale": {"type": "log"}, "type": "quantitative"}}, "transform": [{"filter": {"param": "param_14", "empty": false}}]}, {"mark": {"type": "text", "align": "left", "dx": 5, "dy": -5}, "encoding": {"color": {"field": "symbol", "type": "nominal"}, "text": {"field": "price", "type": "quantitative"}, "x": {"field": "date", "type": "temporal"}, "y": {"field": "price", "scale": {"type": "log"}, "type": "quantitative"}}, "transform": [{"filter": {"param": "param_14", "empty": false}}]}], "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/stocks.csv"}, "height": 400, "params": [{"name": "param_14", "select": {"type": "point", "encodings": ["x"], "nearest": true, "on": "mouseover"}, "views": ["view_9"]}], "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p><em>これまでに学んだことを実践してみましょう：上記の映画散布図（年ごとの動的クエリがあるもの）を修正して、<code class="docutils literal notranslate"><span class="pre">interval</span></code>選択範囲に含まれるデータのIMDB（またはRotten Tomatoes）の平均評価を表示する<code class="docutils literal notranslate"><span class="pre">rule</span></code>マークを含めることができますか？</em></p>
+</section>
+<section id="id7">
+<h2><span class="section-number">6.7. </span>ブラッシング＆リンクの再考<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>以前このノートブックで、_ブラッシング＆リンク_の例を見ました: 動的クエリヒストグラムを使用して映画評価散布図のポイントをハイライトする方法です。ここでは、リンクされた選択に関連する追加の例を見てみましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">cars</span></code>データセットに戻り、<code class="docutils literal notranslate"><span class="pre">repeat</span></code>演算子を使用して、マイレージ、加速、馬力の間の関係を示す<a class="reference external" href="https://en.wikipedia.org/wiki/Scatter_plot#Scatterplot_matrices">散布図行列（SPLOM）</a>を構築することができます。<code class="docutils literal notranslate"><span class="pre">interval</span></code>選択を定義し、繰り返し散布図仕様_内_に含めることで、すべてのプロット間でリンクされた選択を有効にします。</p>
+<p><em>以下のプロットのいずれかでクリック＆ドラッグして、ブラッシング＆リンクを実行してください！</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brush</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span>
+    <span class="n">resolve</span><span class="o">=</span><span class="s1">&#39;global&#39;</span> <span class="c1"># resolve all selections to a single global instance</span>
+<span class="p">)</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">cars</span><span class="p">)</span><span class="o">.</span><span class="n">mark_circle</span><span class="p">()</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span>
+    <span class="n">brush</span>
+<span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;column&#39;</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">),</span>
+    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">brush</span><span class="p">,</span> <span class="s1">&#39;Cylinders:O&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)),</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">brush</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">140</span>
+<span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
+    <span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Acceleration&#39;</span><span class="p">,</span> <span class="s1">&#39;Horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;Miles_per_Gallon&#39;</span><span class="p">],</span>
+    <span class="n">row</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Miles_per_Gallon&#39;</span><span class="p">,</span> <span class="s1">&#39;Horsepower&#39;</span><span class="p">,</span> <span class="s1">&#39;Acceleration&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-33a032041c3d4f629d65b20f60203f1d.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-33a032041c3d4f629d65b20f60203f1d.vega-embed details,
+  #altair-viz-33a032041c3d4f629d65b20f60203f1d.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-33a032041c3d4f629d65b20f60203f1d"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-33a032041c3d4f629d65b20f60203f1d") {
+      outputDiv = document.getElementById("altair-viz-33a032041c3d4f629d65b20f60203f1d");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "repeat": {"column": ["Acceleration", "Horsepower", "Miles_per_Gallon"], "row": ["Miles_per_Gallon", "Horsepower", "Acceleration"]}, "spec": {"data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/cars.json"}, "mark": {"type": "circle"}, "encoding": {"color": {"condition": {"param": "param_15", "field": "Cylinders", "type": "ordinal"}, "value": "grey"}, "opacity": {"condition": {"param": "param_15", "value": 0.8}, "value": 0.1}, "x": {"field": {"repeat": "column"}, "type": "quantitative"}, "y": {"field": {"repeat": "row"}, "type": "quantitative"}}, "height": 140, "name": "view_10", "width": 140}, "params": [{"name": "param_15", "select": {"type": "interval", "resolve": "global"}, "views": ["view_10_child__row_Miles_per_Galloncolumn_Acceleration", "view_10_child__row_Miles_per_Galloncolumn_Horsepower", "view_10_child__row_Miles_per_Galloncolumn_Miles_per_Gallon", "view_10_child__row_Horsepowercolumn_Acceleration", "view_10_child__row_Horsepowercolumn_Horsepower", "view_10_child__row_Horsepowercolumn_Miles_per_Gallon", "view_10_child__row_Accelerationcolumn_Acceleration", "view_10_child__row_Accelerationcolumn_Horsepower", "view_10_child__row_Accelerationcolumn_Miles_per_Gallon"]}], "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>上記では、<code class="docutils literal notranslate"><span class="pre">interval</span></code>選択に<code class="docutils literal notranslate"><span class="pre">resolve='global'</span></code>が使用されている点に注目してください。デフォルト設定の<code class="docutils literal notranslate"><span class="pre">'global'</span></code>は、すべてのプロットにおいて一度に1つのブラシのみがアクティブになることを意味します。しかし、場合によっては複数のプロットでブラシを定義し、その結果を組み合わせたいことがあります。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resolve='union'</span></code>を使用すると、選択はすべてのブラシの_和集合_になります。つまり、任意のブラシ内にあるポイントは選択されます。</p></li>
+<li><p>一方で、<code class="docutils literal notranslate"><span class="pre">resolve='intersect'</span></code>を使用すると、選択はすべてのブラシの_積集合_になります。つまり、すべてのブラシ内にあるポイントのみが選択されます。</p></li>
+</ul>
+<p><em><code class="docutils literal notranslate"><span class="pre">resolve</span></code>パラメータを<code class="docutils literal notranslate"><span class="pre">'union'</span></code>や<code class="docutils literal notranslate"><span class="pre">'intersect'</span></code>に設定して、選択ロジックがどのように変化するか試してみてください。</em></p>
+<section id="id8">
+<h3><span class="section-number">6.7.1. </span>クロスフィルタリング<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>これまで見てきたブラッシング＆リンクの例では、選択に応じて不透明度の値を変更する条件付きエンコーディングを使用していました。もう1つの方法として、1つのビューで定義された選択を使用して、別のビューの内容を_フィルタリング_することもできます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">flights</span></code>データセットを使って、<code class="docutils literal notranslate"><span class="pre">delay</span></code>（フライトの到着が早いか遅いかを示す、分単位）、飛行<code class="docutils literal notranslate"><span class="pre">distance</span></code>（マイル単位）、出発<code class="docutils literal notranslate"><span class="pre">time</span></code>（1日の時間帯）を表すヒストグラムのコレクションを作成してみましょう。<code class="docutils literal notranslate"><span class="pre">repeat</span></code>演算子を使用してヒストグラムを作成し、<code class="docutils literal notranslate"><span class="pre">x</span></code>軸に<code class="docutils literal notranslate"><span class="pre">interval</span></code>選択を追加して、ブラシを積集合で解決します。</p>
+<p>具体的には、各ヒストグラムは2つのレイヤーで構成されます：灰色の背景レイヤーと青色の前景レイヤー。前景レイヤーはブラシ選択の積集合によってフィルタリングされます。この結果、3つのチャート間で_クロスフィルタリング_のインタラクションが実現します！</p>
+<p><em>以下のチャートでブラシ範囲をドラッグしてください。到着遅延が長いまたは短いフライトを選択すると、距離や時間の分布はどのように変化しますか？</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brush</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span>
+    <span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span>
+    <span class="n">resolve</span><span class="o">=</span><span class="s1">&#39;intersect&#39;</span>
+<span class="p">);</span>
+
+<span class="n">hist</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="n">alt</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">),</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;quantitative&#39;</span><span class="p">,</span>
+        <span class="nb">bin</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Bin</span><span class="p">(</span><span class="n">maxbins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">minstep</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="c1"># up to 100 bins</span>
+        <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">titleAnchor</span><span class="o">=</span><span class="s1">&#39;start&#39;</span><span class="p">)</span> <span class="c1"># integer format, left-aligned title</span>
+    <span class="p">),</span>
+    <span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;count():Q&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># no y-axis title</span>
+<span class="p">)</span>
+  
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span>
+    <span class="n">hist</span><span class="o">.</span><span class="n">add_selection</span><span class="p">(</span><span class="n">brush</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;lightgrey&#39;</span><span class="p">)),</span>
+    <span class="n">hist</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span><span class="n">brush</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span>
+    <span class="n">row</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">],</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">flights</span>
+<span class="p">)</span><span class="o">.</span><span class="n">transform_calculate</span><span class="p">(</span>
+    <span class="n">delay</span><span class="o">=</span><span class="s1">&#39;datum.delay &lt; 180 ? datum.delay : 180&#39;</span><span class="p">,</span> <span class="c1"># clamp delays &gt; 3 hours</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;hours(datum.date) + minutes(datum.date) / 60&#39;</span> <span class="c1"># fractional hours</span>
+<span class="p">)</span><span class="o">.</span><span class="n">configure_view</span><span class="p">(</span>
+    <span class="n">stroke</span><span class="o">=</span><span class="s1">&#39;transparent&#39;</span> <span class="c1"># no outline</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-58fbf0229cc4462e9706f5b586f91418.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-58fbf0229cc4462e9706f5b586f91418.vega-embed details,
+  #altair-viz-58fbf0229cc4462e9706f5b586f91418.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-58fbf0229cc4462e9706f5b586f91418"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-58fbf0229cc4462e9706f5b586f91418") {
+      outputDiv = document.getElementById("altair-viz-58fbf0229cc4462e9706f5b586f91418");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": "transparent"}}, "repeat": {"row": ["delay", "distance", "time"]}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"value": "lightgrey"}, "x": {"axis": {"format": "d", "titleAnchor": "start"}, "bin": {"maxbins": 100, "minstep": 1}, "field": {"repeat": "row"}, "type": "quantitative"}, "y": {"aggregate": "count", "title": null, "type": "quantitative"}}, "name": "view_11"}, {"mark": {"type": "bar"}, "encoding": {"x": {"axis": {"format": "d", "titleAnchor": "start"}, "bin": {"maxbins": 100, "minstep": 1}, "field": {"repeat": "row"}, "type": "quantitative"}, "y": {"aggregate": "count", "title": null, "type": "quantitative"}}, "transform": [{"filter": {"param": "param_16"}}]}], "height": 100, "width": 900}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@1/data/flights-5k.json"}, "params": [{"name": "param_16", "select": {"type": "interval", "encodings": ["x"], "resolve": "intersect"}, "views": ["child__row_delay_view_11", "child__row_distance_view_11", "child__row_time_view_11"]}], "transform": [{"calculate": "datum.delay < 180 ? datum.delay : 180", "as": "delay"}, {"calculate": "hours(datum.date) + minutes(datum.date) / 60", "as": "time"}], "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json"}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p><em>クロスフィルタリングを通じて、遅延したフライトがより遅い時間に出発する傾向があることを観察できます。この現象は頻繁に飛行機を利用する人にはおなじみでしょう：遅延が1日の中で伝播し、その飛行機による後続の旅程に影響を与えることがあります。時間通りに到着する確率を高めるには、早朝のフライトを予約しましょう！</em></p>
+<p>複数のビューとインタラクティブな選択の組み合わせにより、基本的なヒストグラムであっても、データセットに対して質問を投げかけるための強力な入力デバイスに変えることができる、価値のある多次元的な推論が可能になります！</p>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">6.8. </span>サマリー<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>Altairでサポートされているインタラクションオプションの詳細については、<a class="reference external" href="https://altair-viz.github.io/user_guide/interactions.html">Altairインタラクティブ選択のドキュメント</a>をご参照ください。また、複数のインタラクション技術を組み合わせたり、モバイルデバイスでのタッチ入力をサポートしたりするためのイベントハンドラのカスタマイズについては、<a class="reference external" href="https://vega.github.io/vega-lite/docs/selection.html">Vega-Lite選択のドキュメント</a>をご覧ください。</p>
+<p>さらに学びたい方へ：</p>
+<ul class="simple">
+<li><p>_選択_の抽象概念は、Satyanarayan、Moritz、Wongsuphasawat、Heerによる論文<a class="reference external" href="http://idl.cs.washington.edu/papers/vega-lite/">「Vega-Lite: A Grammar of Interactive Graphics」</a>で紹介されました。</p></li>
+<li><p>PRIM-9システム（最大9次元での投影、回転、分離、マスキング用）は、Fisherkeller、Tukey、Friedmanによって1970年代初頭に構築された最初期のインタラクティブな視覚化ツールの1つです。<a class="reference external" href="https://www.youtube.com/watch?v=B7XoW2qiFUA">レトロなデモビデオが残っています！</a></p></li>
+<li><p>ブラッシング＆リンクの概念は、Becker、Cleveland、Wilksによる1987年の記事<a class="reference external" href="https://scholar.google.com/scholar?cluster=14817303117298653693">「Dynamic Graphics for Data Analysis」</a>で明確化されました。</p></li>
+<li><p>ビジュアライゼーションのインタラクション技術を包括的にまとめたものとしては、Heer &amp; Shneidermanによる<a class="reference external" href="https://queue.acm.org/detail.cfm?id=2146416">「Interactive Dynamics for Visual Analysis」</a>をご覧ください。</p></li>
+<li><p>最後に、効果的なインタラクションとは何かについては、Hutchins、Hollan、Normanによる古典的な論文<a class="reference external" href="https://scholar.google.com/scholar?cluster=15702972136892195211">「Direct Manipulation Interfaces」</a>をお読みください。</p></li>
+</ul>
+<section id="id10">
+<h3><span class="section-number">6.8.1. </span>付録: 時間の表現について<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>以前、1969年または1970年の映画の数に小さな山があることを観察しました。この山はどこから来ているのでしょうか？そして、なぜ1969年<em>または</em>1970年なのでしょうか？その答えは、欠損データとコンピュータが時間をどのように表現しているかの組み合わせに起因します。</p>
+<p>内部的には、日時は<a class="reference external" href="https://en.wikipedia.org/wiki/Unix_time">UNIXエポック</a>に基づいて表現されます。この基準では、時間の「ゼロ」は<a class="reference external" href="https://en.wikipedia.org/wiki/Coordinated_Universal_Time">UTC時刻</a>で1970年1月1日午前0時（<a class="reference external" href="https://en.wikipedia.org/wiki/Prime_meridian">本初子午線</a>に沿った時刻）に対応します。ところが、リリース日が欠損している（<code class="docutils literal notranslate"><span class="pre">null</span></code>）映画がいくつかあります。これらの<code class="docutils literal notranslate"><span class="pre">null</span></code>値は時間の「0」として解釈され、結果的にUTC時刻で1970年1月1日午前0時に対応します。もしあなたがアメリカ大陸に住んでいる場合（つまり「早い」タイムゾーンにいる場合）、この時刻は現地時間では1969年12月31日の遅い時間に対応します。一方、本初子午線近くまたはその東に住んでいる場合、この時刻は現地時間で1970年1月1日となります。</p>
+<p>このエピソードから得られる教訓は？データに対して常に懐疑的であるべきであり、データがどのように表現されているか（日時、浮動小数点数、緯度と経度、<em>など</em>）が、時には分析に影響を与えるアーティファクトを引き起こす可能性があることを心に留めておくべきです！</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="altair_view_composition.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>複数ビューの構成</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="altair_cartographic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Cartographic Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">6.1. Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-selections">6.2. Introducing Selections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-queries">6.3. Dynamic Queries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.3.1. 複数の入力に選択をバインド</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.3.2. ビジュアライゼーションを動的クエリとして使用する</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.4. パン＆ズーム</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.5. ナビゲーション: オーバービュー + ディテール</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.6. オンデマンド詳細表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.7. ブラッシング＆リンクの再考</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.7.1. クロスフィルタリング</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.8. サマリー</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.8.1. 付録: 時間の表現について</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jeffrey Heer, Dominik Moritz, Jake VanderPlas, and Brock Craft
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
