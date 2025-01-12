@@ -1,7 +1,7 @@
 format: jb-book
 root: intro
 parts:
-- caption: Curriculum
+- caption: カリキュラム
   numbered: true
   chapters:
   - file: altair_introduction
@@ -11,6 +11,6 @@ parts:
   - file: altair_view_composition
   - file: altair_interaction
   - file: altair_cartographic
-- caption: Support
+- caption: サポート
   chapters:
   - file: altair_debugging

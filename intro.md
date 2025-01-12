@@ -1,23 +1,23 @@
-# Introduction
+# はじめに
 
-A data visualization curriculum of interactive notebooks, using [Vega-Lite](https://vega.github.io/vega-lite/) and [Altair](https://altair-viz.github.io/). This book contains a series of Python-based Jupyter notebooks, a corresponding set of JavaScript notebooks are available online on [Observable](https://observablehq.com/@uwdata/data-visualization-curriculum).
+これは、[Vega-Lite](https://vega.github.io/vega-lite/) と [Altair](https://altair-viz.github.io/) を使用したインタラクティブなノートブックのデータ可視化カリキュラムです。本書は、PythonベースのJupyterノートブックのシリーズで構成されており、対応するJavaScriptのノートブックは[Observable](https://observablehq.com/@uwdata/data-visualization-curriculum)でオンラインで利用できます。
 
-## Getting Started
+## 始めに
 
-The visualization curriculum can be used either online or on your local computer. You can view and interact with the plots directly in this Jupyter Book. If you want to modify the code, you have a few different options:
+この可視化カリキュラムは、オンラインでもローカルコンピュータでも使用できます。このJupyter Bookでプロットを直接表示して操作できます。コードを変更したい場合は、いくつかの方法があります：
 
-- To read JavaScript notebooks online using [Observable](https://observablehq.com/), navigate to the "Observable" page above and click the corresponding notebook.
-- To read Python notebooks online using [Colab](https://colab.research.google.com/), click the corresponding section in this book, hover over the little rocket ship at the top of the page, and select "Colab" from the menu.
-- To read Python notebooks locally, follow the instructions below.
+- [Observable](https://observablehq.com/)を使ってオンラインでJavaScriptノートブックを読むには、上記の「Observable」ページに移動し、対応するノートブックをクリックします。
+- [Colab](https://colab.research.google.com/)を使ってオンラインでPythonノートブックを読むには、この本の対応するセクションをクリックし、ページの上部にある小さなロケットアイコンにカーソルを合わせて、メニューから「Colab」を選択します。
+- ローカルでPythonノートブックを読むには、以下の手順に従ってください。
 
-### Local Installation
+### ローカルインストール
 
-1. [Install Altair and a notebook environment](https://altair-viz.github.io/getting_started/installation.html). The most recent versions of these notebooks use _Altair version 4_.
-2. Download the notebooks from the [releases page](https://github.com/uwdata/visualization-curriculum/releases). Typically you will want to use the most recent release.  (If you wish to use notebooks for Altair version 3, download the [Altair v3.2 release](https://github.com/uwdata/visualization-curriculum/releases/tag/altair-v3).)
-3. Open the notebooks in your local notebook environment. For example, if you have JupyterLab installed (v1.0 or higher is required), run `jupyter lab` within the directory containing the notebooks.
+1. [Altairとノートブック環境をインストール](https://altair-viz.github.io/getting_started/installation.html)します。このノートブックで使用されている最新のバージョンは、_Altairバージョン4_です。
+2. [リリースページ](https://github.com/uwdata/visualization-curriculum/releases)からノートブックをダウンロードします。通常は最新のリリースを使用します。（Altairバージョン3用のノートブックを使用したい場合は、[Altair v3.2のリリース](https://github.com/uwdata/visualization-curriculum/releases/tag/altair-v3)をダウンロードしてください。）
+3. ローカルノートブック環境でノートブックを開きます。例えば、JupyterLabがインストールされている場合（v1.0以上が必要）、ノートブックが格納されているディレクトリ内で`jupyter lab`を実行します。
 
-Depending on your programming environment (and whether or not you have a live internet connection), you may want to specify a particular [renderer](https://altair-viz.github.io/user_guide/display_frontends.html) for Altair.
+インターネット接続があるかどうか、また使用しているプログラミング環境に応じて、Altair用の特定の[レンダラー](https://altair-viz.github.io/user_guide/display_frontends.html)を指定することがあります。
 
-## Credits
+## クレジット
 
-Developed at the University of Washington by Jeffrey Heer, Dominik Moritz, Jake VanderPlas, and Brock Craft. Thanks to the [UW Interactive Data Lab](https://idl.cs.washington.edu/) and Arvind Satyanarayan for their valuable input and feedback! Thanks also to the students of [UW CSE512 Spring 2019](https://courses.cs.washington.edu/courses/cse512/19sp/), the first group to use these notebooks within an integrated course curriculum.
+本教材は、ワシントン大学のJeffrey Heer、Dominik Moritz、Jake VanderPlas、Brock Craftによって開発されました。貴重な入力とフィードバックをいただいた[UW Interactive Data Lab](https://idl.cs.washington.edu/)とArvind Satyanarayanに感謝します！また、これらのノートブックを統合されたコースカリキュラム内で最初に使用した[UW CSE512 2019年春学期の学生](https://courses.cs.washington.edu/courses/cse512/19sp/)にも感謝します。
