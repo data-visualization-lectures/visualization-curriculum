@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Visualization Curriculum
+title: Altairの使い方
 author: Jeffrey Heer, Dominik Moritz, Jake VanderPlas, and Brock Craft
 logo: altair-hist.png
 # Logo created via https://vega.github.io/editor/#/url/vega-lite/N4Igxg9gdgZglgcxALlANzgUwO4tAZwBcAnCAa0xRBIEMp8AHG4zKQkAXwBoQaAPOPjwgExOABMAwhAA2EYlVr0mLNp24hxNQjWEBXYjKoALQoQb5kAeithxUAHQArfOMwy4aYg6iZCVqAYAWys0TAQaAFotHXw-fAABAEYrGJorIIgMTHxnfGhOHiDmMioAI2YQHlZIcTgoJFRwWXlheHdxKgBJAFkAEQAhAH0AJW16pB4y+uFivmn6FCSABg0ZcNZO5Cg9GRkefDAadeFiOgRKZABtEABiGDKwZYAmTp57x5e3u+WAZhoAJwwAAsVR+-yBoPewJgYF+MAA7GDbjC4YjkWVfpgAKywjFY3FgEAAXR4LDCxDiKBIekwHA0fGEhAAngxLiAAI56OiEOA6XlhMELWb8BZCZDPVY8doyLYgXqDUbjBpg-iCFA7PYHI4nJrkzCUy40ukaZlM1nsrk8vnjQU8GgIUThbTsyB6NT2gTizUyek8YyYRCmJbY5Y8AAkhwDxRMZgs1lCzocCD5xj0ZQccAgVijmGKiYikQ8hEwoWBDgAHA4knkChwgA
@@ -22,7 +22,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/uwdata/visualization-curriculum # Online location of your book
+  url: https://github.com/data-visualization-lectures/visualization-curriculum # Online location of your book
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
