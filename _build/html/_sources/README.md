@@ -1,3 +1,10 @@
+# ビルド方法
+
+```
+jupyter-book build visualization-curriculum
+```
+
+
 # Data Visualization Curriculum
 
 A data visualization curriculum of interactive notebooks, using [Vega-Lite](https://vega.github.io/vega-lite/) and [Altair](https://altair-viz.github.io/). This repository contains a series of **Python**-based Jupyter notebooks. The notebooks are online in a [Jupyter book](https://uwdata.github.io/visualization-curriculum/intro.html), runnable locally or online on [Colab](https://colab.research.google.com/github/uwdata/visualization-curriculum), [Nextjournal](https://github.nextjournal.com/uwdata/visualization-curriculum), or [Deepnote](https://deepnote.com/launch?url=https://github.com/uwdata/visualization-curriculum/blob/master/altair_introduction.ipynb). A corresponding set of **JavaScript** notebooks are available online on [Observable](https://observablehq.com/@uwdata/data-visualization-curriculum).
